@@ -31,7 +31,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, 
 
 
 #---------------------------------------------------------------------------------------------------------------------
-# The following loop will print most recent statuses, including retweets, posted by the authenticating user and that user’s friends. 
+# The following loop will print most recent statuses, including retweets, posted by the authenticating user and that user’s friends.
 # This is the equivalent of /timeline/home on the Web.
 #---------------------------------------------------------------------------------------------------------------------
 
@@ -49,22 +49,19 @@ for status in tweepy.Cursor(api.home_timeline).items(4):
 #    print("\n\n\nNom de l'utilisateur :\n",status._json.get("user").get("name"),",  ", status._json.get("user").get("screen_name"))
 #    print("\nTweet :\n", status._json.get("text"))
 #    print("\nPlace", status._json.get("place"))
-#    
-    
+#
+
     d={}
     d["idUser"]=status._json.get("user").get("id")
     d["pseudo"]=status._json.get("user").get("screen_name")
     d["location"]=status._json.get("user").get("location")
-    d["followers"]=status._json.get("user").get("followers_count")
-    d["time_zone"]=status._json.get("user").get("time_zone")
     U.append(d)
-    
+
     t={}
     t["idTweet"]=status._json.get("id")
     t["created_date"]=status._json.get("created_at")
     t["content"]=status._json.get("text")
     t["hashtags"]=status._json.get("entities").get("hashtags")
-    t["geo"]=status._json.get("geo")
     t["coords"]=status._json.get("coordinates")
     t["place"]=status._json.get("place")
     t["lang"]=status._json.get("lang")
@@ -72,14 +69,11 @@ for status in tweepy.Cursor(api.home_timeline).items(4):
 
 
 def delDoublons(L):
-    A=[]
-    for i in L:
-        if i not in A:
-            A.append(i)
-    return A
-   
-User=delDoublons(U)   
-    
+    ret = set(L)
+    return list(ret)
+
+User=delDoublons(U)
+
 #file.close()
 
 
@@ -87,14 +81,14 @@ User=delDoublons(U)
 
 
 # =============================================================================
-# 
+#
 # =============================================================================
 class StreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
         print(status.text)
 
-        
+
     def on_error(self, status_code):
         if status_code == 420:
             return False

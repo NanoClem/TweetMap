@@ -70,11 +70,11 @@ class MyOpenMap :
         PARAM coords : coordonnees du lieu a tester
         """
         ret   = False
-        lats  = bbox[0:2]   # latitudes min et max de la bbox
-        longs = bbox[2:4]   # longitudes min et max de la bbox
+        lats  = [bbox[0], bbox[2]]   # latitudes min et max de la bbox
+        longs = [bbox[1], bbox[3]]   # longitudes min et max de la bbox
 
         if min(lats) < coords[0] and coords[0] < max(lats) :            # si les coords se trouvent dans le
-            if min(longs) < coords[0] and coords[0] < max(longs) :      # rectangle que forme la bbox
+            if min(longs) < coords[1] and coords[1] < max(longs) :      # rectangle que forme la bbox
                 ret = True
 
         return ret
