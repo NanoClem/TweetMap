@@ -7,6 +7,8 @@ import folium
 
 class MyMap :
     """
+    Cette classe représente un objet accesseur aux méthodes de
+    l'API Folium
     """
 
     def __init__(self, base_map_location = [], zoom = 13) : #bbox = []) :

@@ -7,10 +7,13 @@ from geopy.geocoders import Nominatim
 
 class MyOpenMap :
     """
+    Cette classe représente un objet accesseur aux méthodes
+    de l'API Nominatim
     """
 
     def __init__(self) :
         """
+        CONSTRUCTEUR de la classe MyOpenMap
         """
         self.nominatim = Nominatim()    # objet accesseurs aux fonctionnalites de Nominatim
         self.location  = None           # donnees sur la localisation du lieu demande
@@ -18,7 +21,7 @@ class MyOpenMap :
 
 
     def _setLocationByCoords(self, coords = ()) :
-        """
+        """:
         """
         self.location = self.nominatim.reverse(coords, addressdetails=True)     # recherche des donnees a partir des coords
 
