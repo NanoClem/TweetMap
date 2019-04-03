@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 01 avr. 2019 à 16:52
+-- Généré le :  mer. 03 avr. 2019 à 00:23
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.7
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `twitterdatabase`
 --
-CREATE DATABASE IF NOT EXISTS `twitterdatabase` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `twitterdatabase`;
 
 -- --------------------------------------------------------
 
@@ -31,27 +29,13 @@ USE `twitterdatabase`;
 --
 
 CREATE TABLE `tweet` (
-  `tweetID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `tweetID` bigint(20) NOT NULL,
   `created_at` varchar(30) NOT NULL,
-  `text` varchar(300) NOT NULL,
+  `text` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `coords` varchar(30) DEFAULT NULL,
   `city` varchar(30) NOT NULL,
   `country` varchar(30) NOT NULL,
   `bbox` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `userID` int(11) NOT NULL,
-  `created_at` varchar(30) NOT NULL,
-  `pseudo` varchar(30) NOT NULL,
-  `country` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -62,24 +46,7 @@ CREATE TABLE `user` (
 -- Index pour la table `tweet`
 --
 ALTER TABLE `tweet`
-  ADD PRIMARY KEY (`tweetID`),
-  ADD KEY `userID` (`userID`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`);
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `tweet`
---
-ALTER TABLE `tweet`
-  ADD CONSTRAINT `tweet_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+  ADD PRIMARY KEY (`tweetID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

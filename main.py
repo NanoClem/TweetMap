@@ -1,5 +1,4 @@
 from MyOpenMap import MyOpenMap
-# import osmapi as osm
 import json
 from TwitterSearch import TwitterSearch
 from MyDatabase import MyDatabase
@@ -30,24 +29,25 @@ def formatTweetInsertion(status) :
 
 def main() :
     """
+    Fonction main
     """
     # ===========================================================================================
     #       API TWITTER
     # ===========================================================================================
     #user credentials to access Twitter API
-    access_token = "2228677797-iebszQqsQUyoM6QwtiQyIhlKpin7E7wdwz0wRDk"
-    access_secret = "mqy4mAgPN6UPiKZczXQfSfKVJlV7BmAfqnYW0QOBBipHT"
-    consumer_key = "aqiqQUMbJrpFEesvVGWzyNevY"
-    consumer_secret = "0uvB4JXW6WVtkeHE9gxaXZkiIbHG4AkMoHbbGtcqvJwpxheAWj"
-
-    tweetSearch = TwitterSearch(access_token, access_secret, consumer_key, consumer_secret)
+    # access_token =
+    # access_secret =
+    # consumer_key =
+    # consumer_secret =
+    #
+    # tweetSearch = TwitterSearch(access_token, access_secret, consumer_key, consumer_secret)
 
     # TENDANCES
     # trends = tweetSearch.getTrends("FR", "France")
     # print(trends)
 
     # TWEETS DANS UNE ZONE
-    # query          = ""
+    # query          = ""                       # n'importe quel sujet
     # STRcoords      = "45.1875602,5.7357819"
     # radius         = "10km"
     # tweetsStatus   = tweetSearch.getTweetsInArea(STRcoords, radius, query, "fr", 500)

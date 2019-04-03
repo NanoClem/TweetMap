@@ -21,7 +21,11 @@ class MyOpenMap :
 
 
     def _setLocationByCoords(self, coords = ()) :
-        """:
+        """
+        Definie une methode de recuperation des donnees
+        avec des coordonnees en entree
+
+        PARAM coords : coordonnees dont on veut recuperer des donnees
         """
         self.location = self.nominatim.reverse(coords, addressdetails=True)     # recherche des donnees a partir des coords
 
@@ -29,6 +33,10 @@ class MyOpenMap :
 
     def _setLocationByName(self, placeName = "") :
         """
+        Definie une methode de recuperation des donnees
+        avec un nom de lieu en entree
+
+        PARAM placeName : nom du lieu dont on veut recuperer les donnees
         """
         self.location = self.nominatim.geocode(placeName, addressdetails=True)  # rechercher des donnees a partir du nom du lieu
 
